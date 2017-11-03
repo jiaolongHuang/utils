@@ -1,0 +1,36 @@
+html.has-cool-modal{
+	height: 100%;
+}
+html.has-cool-modal body{
+	position: relative;
+	height: 100%;
+	overflow: hidden;
+}
+html.has-cool-modal .cool-modal{
+	display: block;
+}
+.cool-modal{
+	display: none;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 9999;
+	background-color: rgba(0, 0, 0, .5);
+}
+.cool-modal-dialog{
+	display: none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 80%;
+	z-index: 10000;
+	border-radius: 4px;
+	-webkit-transform: translate3d(-50%, -50%, 0);
+	transform: translate3d(-50%, -50%, 0);
+	background-color: #fff;
+}
+.cool-modal-dialog p{
+	padding: 15px;
+}

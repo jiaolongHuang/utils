@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="./coolmodal.css">
+</head>
+<body>
+	<button class="gomodal1">open dialog1</button>
+	<button class="gomodal2">open dialog2</button>
+
+	<div class="modal-dialog-1" style="display:none;">
+		<p>cool-modal-dialog1</p>
+		<a href="javascript:void(0);" style="display: block;">click me to close dialog1 and open dialog2</a>
+	</div>
+
+	<div class="modal-dialog-2" style="display:none;">
+		<p>cool-modal-dialog2</p>
+		<button class="closedal2">close dialog2</button>
+	</div>
+
+	<div class="modal-dialog-ajax" style="display: none;"></div>
+
+	<script type="text/javascript" src="http://s.ssl.qhres.com/lib/jquery/183.js"></script>
+	<script type="text/javascript" src="./coolmodal.js"></script>
+	<script type="text/javascript">
+		// 打开一个对话框后，点击其内容再打开另一个对话框
+		var modal1 = $('.modal-dialog-1').modal({
+			modalId: 'modal-dialog-sync-1'
+		});
+		$('.gomodal1').on('click', function(e){
+			modal1.show({}, function($modalCont){
+
+			});
+		});
+		$('a', modal1.$modalCont).click(function(e){
+			modal1.closeDialog();
+			modal2.show();
+		})
+		
+		// 打开一个对话框后，定时自动关闭
+		var modal2 = $('.modal-dialog-2').modal({
+			modalId: 'modal-dialog-sync-2'
+		});
+		$('.gomodal2').on('click', function(e){
+			modal2.show({}, function($modalCont){
+				setTimeout(function(){
+					modal2.close()
+				}, 1000)
+			});
+		});
+		$('.closedal2', modal2.$modalCont).click(function(e){
+			modal2.close();
+		})
+		
+		// 3. 内容为异步获取时
+		var modelTest = $('.modal-dialog-ajax').modal({
+			modalId: 'modal-dialog-async'
+		})
+		if(data && data.html){
+			$selector.find('.mh-news-wrap').append(data.html);
+			console.log(modelTest)
+			modelTest.$modalCont.html('<p>cccc</p>')
+			modelTest.show({}, function($modalCont){
+				
+			});
+		}
+	</script>
+</body>
+</html>
